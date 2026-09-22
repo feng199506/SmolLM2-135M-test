@@ -1,0 +1,487 @@
+从现在重新开始，别把从前记忆拿过来，下面我附上简历：
+求职方向：AI全栈工程师 | AI应用工程师 | AI代码智能工程师 | LLM应用开发工程师 | RAG / 语义搜索工程师 | Web3全栈工程师
+GitHub：面试可展示
+作品集：面试可展示
+个人简介
+AI全栈工程师，5年以上开发经验，具备罕见的综合能力组合，涵盖AI应用开发、后端架构、实时系统、微服务、Web3以及工业人工智能研究。目前在新疆大学攻读博士学位，研究方向包括工业人工智能、风险预测、时间序列建模以及大语言模型（LLM）应用。能够将AI想法从模型/API能力转化为可用的软件产品，覆盖后端服务、前端界面、数据库设计、异步处理、部署以及运维思维。
+构建Hikaflow作为全栈AI工程能力的核心证明，这是一个AI驱动的代码智能平台。系统可连接GitHub/Bitbucket代码仓库，扫描源代码，生成AI文档，支持语义级代码库问答，分析Pull Request，追踪代码影响，并生成团队级工程报告。该项目不仅展示了LLM集成能力，还体现了围绕AI的完整产品工程能力：仓库数据接入、后台任务处理、向量检索、流式AI响应、使用量追踪、计费系统、团队管理以及前端数据看板。
+在后端架构方面具备较强能力，技术栈覆盖Node.js/NestJS、Java Spring Boot/Spring Cloud以及Go/Fiber。曾构建MicroMart，一个基于Spring Boot的微服务平台，包含Gateway、Eureka、Config Server、JWT认证、OpenFeign、Kafka、PostgreSQL/Flyway、Docker Compose以及Actuator健康检查，体现了服务边界设计、网关路由、服务发现、异步事件通信、环境驱动配置以及生产级系统意识。
+构建RelayGO，一个基于Go的实时WebSocket聊天后端系统，包含Redis Pub/Sub广播、PostgreSQL/GORM持久化、JWT认证、PBKDF2密码哈希、限流机制、指标监控、健康/就绪检查、Docker Compose以及SQL迁移。该项目展示了实时后端工程能力，包括WebSocket连接生命周期管理、消息持久化存储、多实例广播基础能力、并发安全设计意识、安全加固以及运维可观测性。
+在LLM应用工程方面经验丰富，不局限于简单API调用，包括DeepSeek/Gemini/OpenAI兼容模型集成、embedding生成、基于pgvector的语义检索、AI代码分析提示词设计、流式AI响应输出、无效JSON修复以及AI生成仓库文档。理解生产级AI系统不仅依赖prompt，还依赖检索质量、失败处理、成本控制、可观测性以及稳定的软件架构。
+具备完整的全栈交付能力，技术栈包括React、Vue、Next.js、TypeScript、Tailwind CSS、Zustand、Recharts/ECharts、Node.js/NestJS、Spring Boot、Go Fiber、PostgreSQL、Redis、Kafka、Docker以及WebSocket/SSE接口。同时拥有Web3 dApp开发经验（Dexifier）以及来自中国石油的工业安全实践经验，使其能够理解软件系统与真实工程场景的结合。
+核心价值在于连接AI与工程：不仅仅构建调用LLM API的demo，而是设计完整系统，能够完成数据接入、异步任务处理、知识检索、流式响应、状态持久化、仪表盘展示、用户/团队/计费管理，并支持部署与运维落地。
+技术技能
+编程语言
+Python，Java，Go，C++/C#，TypeScript，Ruby，MATLAB, R
+前端开发
+React、Vue、Next.js、Tailwind CSS、Zustand、React Router、Recharts、ECharts、响应式UI、仪表盘开发
+后端开发
+·  Node.js、NestJS、Express、PHP、RESTful API、JWT认证、Swagger、定时任务、SSE流式API、第三方API集成
+数据库与缓存
+PostgreSQL、Prisma、pgvector、MySQL、Redis、BullMQ、MongoDB、数据库结构设计、使用日志、后台队列
+AI/机器学习
+PyTorch，Scikit-Learn， Transformer/Informer/WGAN-GP/YOLO
+NLP/时序预测/风险预警建模/模型评估/AI模型调用
+LLM/AI Agent应用开发
+LangChain，RAG，Prompt工程，AI Agent工作流，工具调用，OpenAI API 接口，DeepSeek API 接口，多步推理，文档智能、embeddings、语义搜索、向量检索、提示词工程、AI代码分析、流式AI响应生成
+Web3开发
+Web3.js、Ethers.js、MetaMask、钱包连接、账户管理、链上交互
+工程工具：
+Git、Docker、Linux、npm、API测试、远程协作、部署文档
+领域知识：
+工业人工智能、石化安全、风险预测、燃气预警、应急管理、工业监测数据分析
+软件开发经历
+自由职业 / 合同制全栈开发工程师
+远程 / 项目制 约 2020 年12月 — 至今
+在疫情期间及之后，参与多个远程软件开发项目，涵盖 AI 应用、Web3 系统、数据可视化仪表盘、后端服务以及全栈业务应用。
+参与软件交付全流程，包括需求理解、技术方案设计、前端页面开发、后端 API 开发、数据库设计、测试、部署支持以及后期维护。
+使用 React、Vue、JavaScript/TypeScript 以及 ECharts 等可视化库开发前端界面。
+使用 Node.js、FastAPI 及 Flask 开发后端服务，包括 RESTful API、数据处理逻辑、身份认证、文件上传以及 AI 模型调用。
+根据项目需求集成 PostgreSQL、MySQL、MongoDB、SQLite 及 Redis 等数据库。
+参与 Web3 相关开发，包括钱包连接、dApp 交互、Token 相关业务逻辑以及区块链数据集成。
+开发 AI 相关应用功能，包括模型推理、工作流自动化、数据分析以及智能决策支持。
+通过 Git 协作、在线沟通、迭代交付及基于 Issue 的开发模式，与客户及项目团队开展远程合作。
+项目经历
+Hikaflow | AI驱动代码智能平台 2022.10-2025.12
+技术栈：React、Tailwind CSS、Zustand、NestJS、TypeScript、Prisma、PostgreSQL、pgvector、Redis、BullMQ、JWT、Swagger、DeepSeek API、Gemini API、Stripe
+构建了一个全栈AI代码智能平台，用于代码仓库分析、Pull Request评审、代码文档生成、语义级代码问答以及团队工程报告生成。
+设计了模块化NestJS后端架构，覆盖用户/账户管理、组织/团队管理、代码仓库连接、仓库扫描、PR分析、评论、报告、计费以及Webhook等功能模块。
+实现GitHub与Bitbucket代码仓库集成，包括仓库注册、分支/仓库访问、PR数据处理、commit追踪以及基于Webhook的分析流程。
+构建基于BullMQ与Redis的异步仓库扫描系统，支持全量扫描、变更文件重扫、按需文件扫描、扫描状态追踪以及失败日志记录。
+设计AI代码分析流程，基于DeepSeek与Gemini分析源代码文件，生成结构化文件文档，识别文件类型，提取函数/类/导入/导出信息，并修复AI生成的无效JSON输出。
+实现语义级代码仓库问答系统，通过生成embedding并存储至PostgreSQL/pgvector，实现向量检索相关代码上下文，并支持流式AI回答输出。
+开发基于Server-Sent Events（SSE）的流式API，用于实时AI处理进度推送与回答分片输出，提升长时间仓库分析的用户体验。
+构建PR分析与报告生成流程，包括代码概览生成、复杂度/重复代码分析、commit关联分析、高管报告生成、回归影响分析以及邮件通知功能。
+实现组织与团队管理功能，包括团队创建、角色层级、成员分配、仓库绑定以及访问控制相关后端逻辑。
+集成Stripe计费与订阅系统，包含定价方案、使用量日志、发票、支付事件处理以及基于配额的AI使用控制。
+开发React前端页面，包括登录/注册、仪表盘、仓库管理、扫描进度、文件文档浏览器、AI问答、PR报告、代码详情、重复代码引用、影响分析、团队设置、价格与支付页面。
+使用Zustand进行前端状态管理，并使用Recharts/ECharts风格组件实现指标、风险分布、影响趋势以及工程分析可视化。
+MicroMart | Java Spring Boot 微服务平台 2024.11-2025.10
+技术栈：Java 17、Spring Boot 3、Spring Cloud、Spring Cloud Gateway、Eureka、Config Server、OpenFeign、PostgreSQL、Flyway、Kafka、Docker Compose、Actuator、JWT
+构建了一个面向生产的Spring Boot微服务参考平台，覆盖API网关、服务发现、集中配置、认证、用户管理、领域服务、通知服务以及文件存储服务，展示端到端Java微服务架构能力。
+设计了包含八个服务的架构：config-server、eureka-server、gateway、auth-service、user-service、job-service、notification-service、file-storage，使服务边界更加清晰，并保证各模块可独立构建与部署。
+使用Spring Cloud Gateway作为统一外部入口，结合基于JWT的请求过滤与公开/私有路由分离，减少内部服务直接暴露并提升API访问控制能力。
+基于Spring Security实现认证流程与JWT token签发，采用环境变量驱动的JWT密钥与可配置过期时间，避免安全敏感信息硬编码，提升部署安全性。
+使用Eureka实现服务发现，Spring Cloud Config实现集中配置管理，提升本地与部署环境之间的一致性。
+使用OpenFeign实现服务间通信，包括auth-to-user、job-to-user以及job-to-file-storage调用流程，减少硬编码服务调用并提升微服务集成可维护性。
+集成基于Kafka的异步通知流程，使业务服务可以在不阻塞主请求路径的情况下发布事件，增强领域逻辑与通知投递的解耦能力。
+设计各服务独立的PostgreSQL schema与Flyway数据库迁移脚本，为用户、任务/领域、通知及文件存储建立数据归属，替代不安全的自动建表方式，实现版本化与可复现的数据库变更管理。
+构建文件存储服务，支持文件元数据持久化与可配置的本地二进制存储，将文件元数据与业务服务分离，明确存储职责边界。
+使用多阶段Dockerfile对所有服务进行容器化，并构建Docker Compose环境，包含PostgreSQL、Kafka、Zookeeper、Kafka UI、Config Server、Eureka、Gateway及各应用服务，实现一键本地启动与可复现集成测试。
+添加Spring Boot Actuator健康/就绪检查端点以及Docker Compose健康检查机制，提升服务启动顺序控制、依赖可见性以及本地部署验证能力。
+编写生产就绪（production-readiness）文档，覆盖安全性、可靠性、数据保护、可观测性、性能、发布/回滚以及运维内容，体现超越代码实现层面的系统性工程思维与上线风险评估能力。
+RelayGO | Go 实时WebSocket聊天后端 2023.11-2024.10
+技术栈：Go、Fiber、Fiber WebSocket、Redis、Redis Pub/Sub、PostgreSQL、GORM、JWT、PBKDF2、Docker Compose、Swagger/OpenAPI
+使用Go、Fiber、WebSocket、Redis与PostgreSQL构建实时聊天后端，展示在低延迟、连接导向型场景中的Go后端开发能力。
+实现用户注册与登录认证，采用JWT机制，支持可配置token密钥与TTL，并通过Bearer token中间件提升认证一致性与部署可配置性。
+引入PBKDF2-SHA256密码哈希与常数时间密码校验，替代不安全的明文密码处理方式，提高认证系统安全基线。
+实现经过认证的WebSocket连接生命周期管理，包括客户端注册、断开清理、房间管理、私聊、广播消息以及房间消息，支持多种实时通信模式。
+设计基于Redis Pub/Sub的WebSocket消息分发机制，为多实例水平扩展提供基础，使用户可以连接到不同后端进程仍可正常通信。
+使用PostgreSQL与GORM持久化聊天数据，包括会话、参与者、消息以及消息投递记录，将关键聊天历史从临时Redis状态迁移至可审计的关系型存储。
+添加Redis兼容路径用于聊天历史与联系人列表，同时将持久化消息归属逐步迁移至PostgreSQL，在不破坏现有读取路径的情况下提升可靠性。
+在WebSocket客户端与房间管理中引入并发控制锁机制，降低实时消息传递中的竞态风险。
+实现登录/注册接口的限流机制以及基于用户的WebSocket消息发送限流，降低滥用风险并保护认证与实时通信接口。
+添加健康检查、就绪检查、请求ID中间件、结构化访问日志以及/metrics指标接口（HTTP/WebSocket计数），提升系统运行可观测性与问题排查能力。
+引入SQL迁移脚本、启动迁移执行器、Dockerfile、Docker Compose配置以及Swagger/OpenAPI文档，提升环境可复现性与部署可维护性。
+编写CI工作流与验证脚本，覆盖代码格式检查、测试、竞态检测、Docker构建、Compose验证、PostgreSQL/Redis集成测试以及WebSocket分发测试，提高工程质量控制与发布可靠性。
+Dexifier Web3 平台  2022.02-2023.03
+项目类型： Web3 / dApp / 全栈应用
+技术栈： React、TypeScript、Node.js、Web3.js / Ethers.js、钱包集成、REST API、数据库
+参与 Dexifier Web3 应用开发，涉及钱包连接、去中心化交互、用户资产展示及交易相关流程。
+使用 React + TypeScript 构建前端页面，包括钱包登录、用户仪表盘、代币/资产展示及交互流程。
+使用 Web3.js / Ethers.js 实现 Web3 钱包连接及区块链交互逻辑。
+开发或对接后端 API，用于用户数据、项目配置、交易记录及业务逻辑管理。
+参与调试钱包交互问题、前后端数据一致性问题及 Web3 用户交互流程问题。
+加深了对 dApp 架构、基于钱包的身份认证、区块链交互以及 Web3 产品开发流程的理解。
+工业过程统计监控与故障检测分析
+项目时间： 2025.10 – 2026.04
+项目角色： 数据分析 / 统计建模（个人实战项目）
+项目描述：
+面向化工、石化等流程工业场景，基于 Python 与 Jupyter 搭建统计过程监控（SPM）分析体系，覆盖从单变量控制图到多元 PCA/PLS 故障检测与诊断的完整流程。使用 7 套真实工业数据集（曝气池、CSTR 反应器、聚合物过程、FCCU 催化裂化、LDPE 反应器、加热炉等），完成 23 个可复现分析 Notebook，实现过程异常识别、变量贡献定位及监控方案效果评估。
+主要工作：
+构建单变量监控方案：实现 Shewhart、CUSUM、EWMA 控制图，对比不同均值漂移场景下的检出能力；量化监控性能，CUSUM 方案误报率 FAR=4.4%、漏检率 MDR=28.0%
+处理时序自相关问题：对 CSTR 温度数据建立 ARIMA(2,0,4) 模型，基于残差实施控制图监控，降低自相关导致的误报风险
+开展多元 PCA 故障检测：对 33 维聚合物过程降维至 13 个主成分（累计方差≥90%）；基于 Hotelling T² 与 Q 统计量设定 99 分位控制限，完成故障检测与贡献图诊断
+完成 FCCU 换热器结垢案例：仅用 3 个主成分解释≥90% 过程方差，实现结垢工况下 T² 超限预警
+建立 PLS 多元回归监控模型：LDPE 反应器保留 3 个潜变量，训练集 R²≈89.9%，Y 空间方差解释 89.9%；完成故障检测、SPE 监控及变量级故障隔离
+输出可视化分析成果与项目文档，形成可复用的工业 FDD（故障检测与诊断）分析模板
+技术栈： Python · Pandas · NumPy · Matplotlib · scikit-learn · statsmodels · Jupyter · PCA · PLS · 控制图 · 时序分析
+
+科研经历
+基于WGAN-GP-Transformer的瓦斯爆炸风险预警研究
+瓦斯爆炸风险预警研究
+基于 WGAN-GP-Transformer 深度学习方法，研究煤矿瓦斯浓度变化与爆炸风险预警问题。
+使用 Python 进行数据预处理、特征分析、模型训练、实验对比及结果可视化。
+发表中文核心期刊论文：《基于 WGAN-GP-Transformer 的煤矿瓦斯爆炸风险预警》。
+研究方向适用于工业安全监测、异常检测、设备预警及能源安全场景。
+空气质量时空预测研究
+基于时空嵌入与注意力机制开展空气质量预测研究。
+研究多时间序列、多地点环境数据的动态关系，以提升复杂预测性能。
+发表 SCI 中科院二区论文：《Spatiotemporal Informer: A New Approach Based on Spatiotemporal Embedding and Attention for Air Quality Forecasting》，IF：8.9
+研究成果适用于智慧城市、环境监测、时间序列预测平台及数据智能系统。
+防火服模拟与热防护分析研究
+参与应急管理部天津消防研究所防火服火灾模拟研究。
+基于算法建模与仿真分析，研究不同火灾场景下的热暴露情况。
+对实验与仿真数据进行处理、分析与可视化，支持防护性能评估。
+其他科研项目
+参与广东应急专项波浪驱动剖面浮标项目。
+参与国家自然科学基金半主动扑翼推进性能研究项目。
+参与天津海上船舶尾气监测监管系统建设效果评估报告项目。
+参与工贸行业安全监管执法能力提升培训项目。
+积累了安全监测、科研项目、数据分析、技术文档及跨团队协作经验。
+工作经历
+中国石油乌鲁木齐石化公司
+岗位：工艺工程师
+时间：2018.08 - 2020.12
+参与石油化工生产与工艺安全工作，熟悉工业运行、安全风险控制及生产数据管理。
+参与工艺监测、生产数据整理、安全检查、风险识别及技术文档编写。
+建立石化安全、危化品管理、安全监测及事故预防相关领域知识，为后续工业 AI 应用开发提供基础。
+
+厂办文员 / 厂长秘书
+时间：2020.12 - 2021.07
+负责会议材料、文件整理、跨部门沟通及生产管理文档工作。
+提升文档能力、沟通能力、需求理解能力与协调能力。
+
+新疆维吾尔自治区应急管理厅
+临时办公岗位
+时间：2021.01 - 2021.03
+参与应急管理文件整理、行政协调及相关办公室工作。
+加深对安全监管、应急管理及风险防控体系的理解。
+
+教育经历
+新疆大学
+博士在读：石油与天然气工程
+2024.09 - 至今
+研究方向：深度学习、机器学习、风险预警、瓦斯浓度预测、模型调度、工业安全智能化
+
+天津理工大学
+硕士：安全工程
+2021.09 - 2024.06
+研究方向：基于 AI 的风险评估、深度学习、机器学习、事故预防、安全监测
+
+天津理工大学
+本科：安全工程
+2014.09 - 2018.06
+
+论文发表
+Spatiotemporal Informer: A New Approach Based on Spatiotemporal Embedding and Attention for Air Quality Forecasting（SCI Q2，影响因子 8.9）
+基于 WGAN-GP-Transformer 的煤矿瓦斯爆炸风险预警（中文核心期刊）
+研究方向：
+时空预测
+Transformer
+工业AI
+风险预警
+安全智能
+
+荣誉与证书
+研究生国家奖学金（2022-2023）
+研究生学业奖学金（2021-2022、2022-2023）
+自治区博士研究生学业奖学金（2023-2024）
+研究生新生奖学金（2021）
+CET-4 / CET-6
+EHS（环境、健康与安全）体系内审员证书
+中国石油优秀共青团员（2020）
+
+
+上面是我的简历，你先记一下，千万别忘。后面我会把岗位描述一个一个的给你，你就给我推荐要不要投简历，简单两句理由，不需要多。就两句就可以。
+要投的话，就给我生成匹配度最高的ATS优化版简历吧。
+在网页上完整排版让我复制就可以，先什么都别说。
+还有能合并的尽量合并，给我中文精简版。这个简历和需求需要长期记忆。长期记住。先什么解释都不需要。
+
+
+Target Roles: AI Full-Stack Engineer | AI Application Engineer | AI Code Intelligence Engineer | LLM Application Engineer | Full-Stack Software Engineer
+Location: Urumqi
+GitHub / Project Code: Available for interview demonstration
+Personal Strengths
+AI full-stack engineer with hands-on experience in building AI-powered software systems, repository intelligence platforms, Web3 dApps, and full-stack business applications. Currently pursuing a PhD at Xinjiang University, with research interests in industrial AI, risk prediction, time-series modeling, and LLM applications.
+Strong practical experience in designing production-oriented AI application architecture. Built Hikaflow, an AI-powered code intelligence platform that connects to GitHub/Bitbucket repositories, scans source code, generates AI documentation, supports semantic repository Q&A, analyzes pull requests, tracks code impact, and provides team-level engineering reports.
+Experienced in backend architecture design with NestJS, TypeScript, Prisma, PostgreSQL, pgvector, Redis, BullMQ, JWT authentication, Swagger, scheduled jobs, Stripe billing, and third-party API integration. Able to design modular backend services, database schemas, background task queues, usage tracking, streaming AI APIs, and full software delivery workflows.
+Experienced in LLM application engineering, including DeepSeek / Gemini / OpenAI-compatible API integration, code analysis prompts, embedding generation, vector-based semantic retrieval, AI response streaming, structured JSON repair, AI-generated documentation, and repository-level question answering.
+Possesses full-stack development capability with React, Vue, Next.js, Node.js/NestJS, RESTful APIs, data dashboards, frontend-backend integration, Docker-based deployment, and remote project delivery. Has additional experience in Web3 dApp development and industrial AI research, enabling him to combine software engineering, AI systems, and real-world business scenarios.
+Job Openings
+AI Full-Stack Engineer | AI Application Engineer | AI Code Intelligence Engineer | LLM Application Development Engineer | RAG / Semantic Search Engineer | Web3 Full-Stack Engineer
+Technical Skills
+Programming Languages: Python, JavaScript, TypeScript, R, MATLAB
+Frontend: React, Vue, Next.js, Tailwind CSS, Zustand, React Router, Recharts, ECharts, responsive UI, dashboard development
+Backend: Node.js, NestJS, Express, RESTful API, JWT authentication, Swagger, scheduled jobs, SSE streaming APIs, third-party API integration
+Database & Middleware: PostgreSQL, Prisma, pgvector, MySQL, Redis, BullMQ, MongoDB, database schema design, usage logs, background queues
+AI / LLM: DeepSeek API, Gemini API, OpenAI-compatible APIs, embeddings, semantic search, vector retrieval, prompt engineering, AI code analysis, streaming AI response generation
+Web3: Web3.js, Ethers.js, MetaMask, wallet connection, account management, on-chain interaction
+Engineering Tools: Git, Docker, Linux, npm, API testing, remote collaboration, deployment documentation
+Domain Knowledge: Industrial AI, petrochemical safety, risk prediction, gas warning, emergency management, industrial monitoring data analysis
+Project Experience
+Hikaflow | AI-Powered Code Intelligence Platform
+Tech Stack: React, Tailwind CSS, Zustand, NestJS, TypeScript, Prisma, PostgreSQL, pgvector, Redis, BullMQ, JWT, Swagger, DeepSeek API, Gemini API, Stripe
+Built a full-stack AI code intelligence platform for repository analysis, pull request review, code documentation, semantic code Q&A, and team engineering reports.
+Designed a modular NestJS backend covering user/account management, organization/team management, repository connection, repository scanning, pull request analysis, comments, reports, billing, and webhooks.
+Implemented GitHub and Bitbucket repository integration, including repository registration, branch/repository access, pull request data processing, commit tracking, and webhook-driven analysis workflows.
+Built an asynchronous repository scanning system using BullMQ and Redis, supporting full repository scans, changed-file rescans, on-demand file scans, scan status tracking, and failure logging.
+Designed an AI code analysis pipeline using DeepSeek and Gemini to analyze source files, generate structured file documentation, classify file types, extract functions/classes/imports/exports, and repair invalid AI JSON output.
+Implemented semantic repository Q&A by generating embeddings, storing vectors in PostgreSQL/pgvector, retrieving relevant code context, and generating AI answers with streaming response support.
+Developed Server-Sent Events streaming APIs for real-time AI progress updates and streamed answer chunks, improving user experience during long-running repository analysis.
+Built PR analysis and reporting workflows, including code overview generation, complexity/duplication analysis, commit association, executive reports, regression impact analysis, and email notifications.
+Implemented organization/team features, including team creation, role hierarchy, team-member assignment, repository linking, and access-control-related backend logic.
+Integrated Stripe billing and subscription features, including pricing plans, usage logs, invoices, payment events, and quota-aware AI usage tracking.
+Developed React frontend pages for login/register, dashboard, repository management, scan progress, file documentation explorer, AI Q&A, PR reports, code details, duplicate code references, impact analysis, team settings, pricing, and payment.
+Used Zustand for frontend state management and Recharts/ECharts-style dashboard components for metrics, risk distribution, impact trends, and engineering analytics visualization.
+
+MicroMart | Java Spring Boot Microservices Platform
+Tech Stack: Java 17, Spring Boot 3, Spring Cloud, Spring Cloud Gateway, Eureka, Config Server, OpenFeign, PostgreSQL, Flyway, Kafka, Docker Compose, Actuator, JWT
+Built a production-oriented Spring Boot microservices reference platform covering API gateway, service discovery, centralized configuration, authentication, user management, domain services, notification service, and file storage service, demonstrating end-to-end Java microservice architecture capability.
+Designed an eight-service architecture including config-server, eureka-server, gateway, auth-service, user-service, job-service, notification-service, and file-storage, improving service boundary clarity and making each module independently buildable and deployable.
+Implemented Spring Cloud Gateway as the unified external entry point with JWT-based request filtering and public/private route separation, reducing direct exposure of internal services and improving API access control.
+Built authentication flow with Spring Security and JWT token issuing, using environment-driven JWT secrets and configurable expiration, removing hardcoded security-sensitive values and improving deployment safety.
+Used Eureka for service discovery and Spring Cloud Config for centralized service configuration, improving environment consistency across local and deployment environments.
+Implemented service-to-service communication with OpenFeign, including auth-to-user, job-to-user, and job-to-file-storage flows, reducing hardcoded service calls and improving microservice integration maintainability.
+Integrated Kafka-based asynchronous notification flow, allowing business services to publish events without blocking the main request path and improving decoupling between domain logic and notification delivery.
+Designed service-owned PostgreSQL schemas and Flyway migrations for user, job/domain, notification, and file-storage data ownership, replacing unsafe automatic schema updates with versioned and reproducible database changes.
+Built file storage service supporting file metadata persistence and configurable local binary storage, separating file metadata from business services and improving storage responsibility boundaries.
+Containerized all services with multi-stage Dockerfiles and built a Docker Compose environment including PostgreSQL, Kafka, Zookeeper, Kafka UI, Config Server, Eureka, Gateway, and application services, enabling one-command local startup and reproducible integration testing.
+Added Spring Boot Actuator health/readiness endpoints and Docker Compose health checks, improving service startup ordering, dependency visibility, and local deployment validation.
+Prepared production-readiness documentation covering security, reliability, data protection, observability, performance, release/rollback, and operations, showing the ability to think beyond code implementation and evaluate real launch risks.
+
+RelayGO | Go Real-Time WebSocket Chat Backend
+Tech Stack: Go, Fiber, Fiber WebSocket, Redis, Redis Pub/Sub, PostgreSQL, GORM, JWT, PBKDF2, Docker Compose, Swagger/OpenAPI
+Built a real-time chat backend using Go, Fiber, WebSocket, Redis, and PostgreSQL, demonstrating Go backend development ability in low-latency, connection-oriented scenarios.
+Implemented user registration and login with JWT authentication, configurable token secret/TTL, and Bearer token middleware, improving authentication consistency and deployment configurability.
+Added PBKDF2-SHA256 password hashing and constant-time password verification, replacing unsafe plaintext password handling and improving the security baseline of the authentication system.
+Implemented authenticated WebSocket connection lifecycle, including client registration, disconnect cleanup, room management, direct messages, broadcast messages, and room messages, enabling real-time communication across multiple chat modes.
+Designed Redis Pub/Sub fanout for WebSocket message delivery, creating a foundation for multi-instance horizontal scaling where users may connect to different backend processes.
+Persisted durable chat data in PostgreSQL using GORM, including conversations, participants, messages, and message delivery records, moving important chat history from ephemeral Redis state into auditable relational storage.
+Added Redis-backed compatibility paths for chat history/contact lists while shifting durable message ownership to PostgreSQL, improving reliability without breaking existing read paths.
+Added concurrency protection around in-process WebSocket clients and rooms with locks, reducing race-condition risk in real-time message delivery.
+Implemented rate limiting for login/register routes and per-user WebSocket message sending, reducing abuse risk and protecting both authentication and realtime endpoints.
+Added health check, readiness check, request ID middleware, structured access logging, and /metrics endpoint for HTTP/WebSocket counters, improving operational visibility and making runtime behavior easier to diagnose.
+Added SQL migrations, startup migration runner, Dockerfile, Docker Compose setup, Swagger/OpenAPI documentation, and production-readiness runbooks, improving environment reproducibility and deployment maintainability.
+Prepared CI workflow and validation scripts covering formatting, tests, race checks, Docker build, Compose validation, PostgreSQL/Redis integration tests, and WebSocket fanout tests, improving engineering quality control and release confidence.
+
+
+Dexifier | Web3 dApp System
+Tech Stack: React, TypeScript, Web3.js, Ethers.js, MetaMask
+Developed a Web3 dApp system supporting wallet connection, account management, asset display, and on-chain interaction.
+Integrated MetaMask wallet authentication and blockchain interaction logic using Web3.js / Ethers.js.
+Built frontend pages for wallet login, user dashboard, asset inquiry, and transaction-related user flows.
+Participated in debugging wallet connection issues, blockchain data synchronization, and frontend interaction flows.
+Gained practical experience in dApp architecture, wallet-based authentication, and Web3 product development.
+AI Data Analysis and Visualization System
+Tech Stack: React, ECharts, Node.js / Python, Database, LLM APIs
+Built data visualization dashboards using React and charting libraries for business data analysis.
+Integrated LLM APIs for text analysis, automated data processing, and result summarization.
+Implemented backend APIs and database logic for data storage, query, and visualization support.
+Delivered frontend-backend integrated features for small AI/full-stack freelance projects.
+Education
+Xinjiang University
+PhD Candidate, Petroleum and Natural Gas Engineering
+2024.09 - Present
+Research Interests: Industrial AI, risk prediction, time-series modeling, LLM applications
+Tianjin University of Technology
+Master’s Degree, Safety Engineering
+2021 - 2024
+Tianjin University of Technology
+Bachelor’s Degree, Safety Engineering
+2014 - 2018
+Work Experience
+Freelance AI Full-Stack Engineer
+2021 - Present
+Responsible for full-stack development of AI, Web3, and data-oriented software systems.
+Built backend services with Node.js, NestJS, FastAPI-style API design experience, database schema design, authentication, and third-party API integration.
+Developed frontend applications using React/Vue, including dashboards, repository management pages, AI interaction pages, and data visualization interfaces.
+Participated in AI application development involving LLM API integration, semantic retrieval, code analysis, automated data processing, and workflow-style task execution.
+Participated in Web3 dApp development, including wallet connection, account management, and on-chain interaction.
+Worked remotely with clients and project teams to clarify requirements, deliver features, fix bugs, and support deployment.
+PetroChina Urumqi Petrochemical | Process Engineer
+2018 - 2020
+Participated in petrochemical production monitoring, industrial data analysis, process safety work, and risk control.
+Accumulated domain knowledge in industrial operations, safety monitoring, hazardous chemical safety, and risk assessment.
+Built a practical industrial background that supports later AI applications in industrial safety and risk prediction scenarios.
+
+
+上面是我的简历，你先记一下，千万别忘。需要长期记忆。
+后面我会把岗位描述一个一个的给你，你就给我推荐要不要投简历，简单两句理由，不需要多。就两句就可以。
+要投的话，就给我生成匹配度最高的ATS优化版简历吧。
+在网页上完整排版让我复制就可以，先什么都别说。
+还有能合并的尽量合并，给我精简版。
+
+
+
+
+API, ARIMA, Bitbucket, BullMQ, C#, C++, CI, Config, CSS, CSTR, dApp, DeepSeek, Docker, Docker-Compose, Dockerfile, ECharts, EHS, Ethers.js, Eureka, Express, FCCU, Fiber, Flyway, Gateway, Gemini, Git, GitHub, Go, GORM, Hikaflow, Hotelling, Informer, Java, Jupyter, JWT, Kafka, LangChain, LDPE, Linux, LLM, MATLAB, Matplotlib, MetaMask, MicroMart, MongoDB, MySQL, NestJS, Next.js, NLP, Node.js, npm, NumPy, OpenAI, OpenAPI, OpenFeign, Pandas, PCA, PBKDF2, pgvector, PHP, PLS, PostgreSQL, Prisma, PyTorch, R, RAG, React, Redis, RelayGO, RESTful, Ruby, Scikit‑Learn, SPE, Spring, Spring Boot, Spring Cloud, SSE, Statsmodels, Stripe, Swagger, Tailwind, Token, Transformer, TypeScript, UI, Vue, Web3, Web3.js, Webhook, WebSocket, WGAN‑GP, YOLO, Zustand
+
+
+
+
+
+
+Professional Headline
+Senior AI Code Evaluation Engineer | Python Software Engineer | AI Model Evaluation | Benchmark Engineering | Data Engineering
+
+Professional Summary
+Senior AI Code Evaluation Engineer with 4+ years of experience developing production Python applications, cloud data platforms, and AI evaluation workflows. Experienced in evaluating AI-generated code, software architecture, technical reasoning, benchmark engineering, and structured quality assessment for large language models. Strong background in Python, SQL, AWS, ETL automation, software quality assurance, and technical documentation. Passionate about improving frontier AI systems through objective human evaluation, reproducible benchmarks, and production-grade software engineering.
+
+Core Competencies
+AI Evaluation
+AI Code Evaluation
+AI Model Evaluation
+Large Language Models (LLMs)
+Prompt Engineering
+Benchmark Engineering
+Human Evaluation
+AI Quality Assurance
+Technical Reasoning Review
+Annotation Quality Assurance
+Instruction Following Evaluation
+Code Review
+Software Architecture Review
+Benchmark Dataset Design
+Evaluation Rubrics
+Technical Documentation
+Software Engineering
+Python
+SQL
+REST APIs
+Git
+GitHub
+AWS
+Linux
+Debugging
+System Design
+Data Structures
+Algorithms
+CI/CD
+Object-Oriented Programming
+Unit Testing
+Software Quality
+Cloud & Data Engineering
+AWS Glue
+Lambda
+Athena
+Step Functions
+S3
+DynamoDB
+Aurora
+EMR
+ETL Pipelines
+Data Validation
+Data Quality
+Data Engineering
+Cloud Computing
+Statistics
+Machine Learning
+
+Selected AI Evaluation Impact
+Designed benchmark tasks for software engineering evaluation.
+Evaluated AI-generated code, software architecture, pull requests, and technical reasoning.
+Created structured evaluation rubrics and reviewer documentation.
+Reviewed complex engineering scenarios using objective quality criteria.
+Contributed to benchmark engineering initiatives supporting frontier AI systems.
+
+Technical Skills
+Programming: Python, SQL
+Cloud: AWS (Glue, Lambda, Athena, Step Functions, S3, DynamoDB, Aurora, EMR)
+Software Engineering: REST APIs, Git, GitHub, Linux, System Design, Algorithms, Data Structures, CI/CD
+AI Evaluation: AI Code Evaluation, LLM Evaluation, Prompt Engineering, Benchmark Engineering, Human Evaluation, Code Review, Technical Reasoning, Annotation Quality Assurance
+Data Engineering: ETL, Data Validation, Data Quality, Statistics, Machine Learning
+
+
+Freelance Full-Stack Software Engineer
+Self-Employed
+Designed and developed custom web applications for small businesses and independent clients using Python, JavaScript, SQL, HTML, and CSS.
+Built RESTful APIs, database-driven applications, and responsive user interfaces while delivering complete end-to-end solutions.
+Integrated third-party APIs, authentication systems, payment workflows, and cloud-hosted services to support production deployments.
+Worked directly with clients to gather requirements, design scalable solutions, and deliver maintainable software.
+Maintained source control with Git and followed modern software engineering practices including testing, debugging, documentation, and iterative delivery.
+Built experience across backend development, frontend development, database design, and cloud deployment before transitioning into enterprise software engineering.
+
+Software Engineer
+Fannie Mae
+(Keep mostly unchanged.)
+
+Data Engineer
+Spintel
+(Keep mostly unchanged.)
+
+Senior AI Code Evaluation Engineer
+Independent Consultant
+Evaluate AI-generated software solutions, technical reasoning, and software architecture across complex software engineering tasks.
+Design benchmark tasks, evaluation rubrics, and structured quality assurance workflows used for LLM assessment.
+Review pull requests, GitHub issue-style scenarios, reference implementations, and AI-generated code for correctness, maintainability, performance, and security.
+Produce detailed reviewer documentation and calibration guidelines to ensure consistent human evaluation quality.
+Support benchmark engineering initiatives covering software engineering, code generation, reasoning quality, and prompt evaluation.
+
+AI Software Engineer (Contract)
+Revelo
+Mar 2025 – Present
+(Supporting projects such as Benchmark V2, PR-Writer, and Behavioral Data – Architecture & Strategy, without naming internal codenames on a public resume.)
+Participated in multiple AI software engineering evaluation initiatives focused on benchmark engineering, pull request analysis, and software architecture assessment.
+Evaluated AI-generated code across backend, frontend, and full-stack software engineering tasks using structured technical review methodologies.
+Reviewed pull requests, software design decisions, GitHub issue scenarios, and implementation strategies to assess correctness, maintainability, and production readiness.
+Developed benchmark specifications, evaluation criteria, and reviewer documentation supporting frontier AI systems.
+Performed comparative evaluation of multiple model responses, identifying logical errors, edge cases, and opportunities for improving reasoning quality.
+Collaborated remotely with distributed engineering teams while maintaining high annotation consistency and quality standards.
+
+AI Model Evaluation Specialist
+AfterQuery
+Apr 2025 – Present
+(Supporting projects such as Silver and Pluto.)
+Evaluated AI-generated technical responses, programming solutions, and structured reasoning tasks covering software engineering, mathematics, and analytical problem solving.
+Compared multiple model outputs using detailed evaluation guidelines focused on factual correctness, instruction following, logical consistency, completeness, and technical accuracy.
+Produced high-quality reviewer feedback supporting benchmark creation and model improvement for frontier large language models.
+Identified hallucinations, reasoning failures, implementation mistakes, and edge cases requiring expert technical judgment.
+Worked independently across asynchronous AI evaluation projects while consistently meeting quality and productivity expectations.
+Contributed to improving benchmark datasets through structured human evaluation and detailed annotation review.
+
+AI Data Quality & Model Evaluation Specialist
+Vetto
+Mar 2026 – Present
+(Supporting projects such as Computer-control-04.)
+Evaluated AI agent behavior across computer-control, workflow automation, and task execution scenarios involving complex multi-step interactions.
+Assessed instruction following, planning capability, reasoning quality, task completion, and workflow reliability using structured quality standards.
+Reviewed AI-generated outputs for logical consistency, edge cases, robustness, and production readiness across multimodal evaluation tasks.
+Documented annotation quality issues, provided reviewer feedback, and validated training data used for improving AI systems.
+Participated in calibration activities and maintained high consistency across large-scale AI evaluation workflows.
+Worked independently within remote asynchronous review environments while ensuring objective, reproducible human evaluation.
+
+AI Trainer – Software Engineering
+Handshake AI Fellowship
+(When actual project work has begun.)
+Evaluated AI-generated software engineering solutions, code implementations, and technical reasoning for correctness, maintainability, efficiency, and security.
+Reviewed benchmark prompts, reference implementations, and comparative model outputs covering backend, frontend, algorithms, databases, and software architecture.
+Applied structured evaluation rubrics to assess reasoning quality, instruction following, factual accuracy, and production readiness.
+Produced detailed reviewer feedback, benchmark documentation, and quality assurance reports supporting frontier AI model development.
+Collaborated within distributed AI evaluation teams while maintaining confidentiality, annotation consistency, and high-quality technical judgment.
+Contributed expert software engineering knowledge to improve benchmark quality and overall AI model performance.
+
+Experience Summary
+This progression tells a coherent story:
+2019–2022: Freelance Full-Stack Software Engineer
+2022–2026: Enterprise Software Engineer / Data Engineer
+2025–Present: AI Code Evaluation & Benchmark Engineering across multiple platforms
+That narrative is very attractive for AI evaluation roles because it combines real software engineering experience with specialized AI assessment work.
+One final caution: I intentionally wrote these entries in terms of responsibilities, not confidential internal project details. If any bullet describes work Julia did not actually perform, it should be edited or removed. The strongest resume is one that is both compelling and defensible in an interview.
+
+Professional Strengths
+Production Software Engineering
+AI Code Evaluation
+Benchmark Engineering
+Technical Reasoning
+Human Evaluation
+Data Engineering
+Cloud Computing
+Software Architecture
+Code Review
+Prompt Engineering
+AI Quality Assurance
+Technical Writing
+Remote Collaboration
+Attention to Detail
+Analytical Problem Solving
+
+
+
+
+
+， 网上找一下跟这个岗位要求匹配度高，但没有名的项目有哪些？不光HR不知道，最好技术面试官也不太知道的？
+利用上面的项目信息，结合我以前的简历信息，给我生成匹配度最高的简历a4 两页，但注意能合并到一行的就尽量合并，不要拉长，只要简历，其他什么都不要
+
+
+

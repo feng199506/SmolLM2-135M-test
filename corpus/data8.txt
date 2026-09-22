@@ -1,0 +1,658 @@
+SWARM 竞争提升长期总纲 V1
+
+长期提醒标识：
+
+SWARM_UID20_COMPETITIVE_FRAMEWORK_V1
+
+以后如果上下文变长或出现漂移，你可以让我先读取磁盘权威文件，并按这个标识恢复以下框架。
+
+一、最终目标
+
+目标不是达到官方最低门槛，也不是让某个局部实验形式上 PASS。
+
+最终目标是：
+
+在官方同一评估器、配对 seed、相同资源预算和官方推理环境下，做出可重复、统计可信、具有实际幅度的分数提升；不增加失败、安全或稳定性风险，不以牺牲其他地图换取局部提升，并以足够分差超过当前冠军。
+
+基准分为两层：
+
+UID235：历史冻结基线、诊断基线和一键回滚对象。
+UID20/v00：当前用户观察到的新冠军，经过 P9 验证后应成为候选新开发/竞争基线。
+
+新冠军出现后：
+
+不删除 UID235 历史实验；
+不把 UID235 的提升直接视为对 UID20 的提升；
+后续新策略优先在验证后的当前冠军基线上实验；
+最终目标随当前冠军刷新，而不是固定为“UID235 +0.01”。
+
+外部模型、跨任务代码、论文、GitHub、Discord、SLAM 等都只是候选机制来源，不能直接成为升级许可。
+
+二、权威信息优先级
+
+发生冲突时，按以下顺序判断：
+
+用户最新明确目标与授权；
+.cursor/rules/ 和现行治理文件；
+PHASE3C_CURRENT_AUTHORITATIVE_CONTEXT.json；
+冻结 baseline、manifest、registry、closure；
+原始运行 JSONL、checkpoint、artifact；
+validation/audit report；
+Cursor/Claude/ChatGPT 的回答摘要与 capsule；
+cache、tmp、文件名和记忆推测。
+
+核心原则：
+
+磁盘原始证据高于报告摘要，报告高于聊天记忆；历史报告不能覆盖更新后的当前权威索引。
+
+三、长期目录职责
+.cursor/rules/
+
+新 Chat 中最重要的长期约束：
+
+当前任务和路径边界；
+策略开发纪律；
+模块化推广规则；
+外部冠军刷新；
+多角色监督；
+工作区隔离；
+竞争目标与推广门槛。
+workspace/
+
+冻结的官方源码和基准代码。不能被实验模块不可逆修改。
+
+references/
+
+已经正式登记的参考模型与源码。
+
+external_candidates/.../inbox
+
+新下载但尚未正式接纳的模型：
+
+原始 ZIP；
+来源、时间、哈希；
+quarantine 状态。
+
+不能直接将 inbox 代码复制到正式策略。
+
+experiments/
+
+保存：
+
+locked manifest；
+development/validation/holdout seeds；
+参数冻结；
+实验设计；
+A/B 配对关系。
+runs/
+
+真实运行证据：
+
+JSONL；
+checkpoint；
+telemetry；
+grant；
+runtime evidence。
+strategy_cards/
+
+每个模块的：
+
+strategy ID；
+来源；
+版本；
+参数；
+地图/fleet；
+失败和回滚条件。
+submissions/
+
+最终候选提交包。不能被普通实验直接污染。
+
+历史 PHASE...REPORT
+
+是审计轨迹，不是每次都必须读取的当前状态。当前入口是：
+
+PHASE3C_CURRENT_AUTHORITATIVE_CONTEXT.json
+
+四、证据来源体系
+来源	用途	证据强度
+官方 validator/任务源码	接口、评分、资源和规则	最高约束
+当前任务冠军与排行模型	同任务可迁移机制	很高
+非冠军/历史 GitHub 模型	发现被冠军遗漏的策略	高
+其他 Swarm 任务冠军	恢复、着陆、分配等机制来源	中等
+本地配对实验	判断本任务真实因果效果	最高实验依据
+顶级论文	提供机制和理论依据	不能代替本地验证
+GitHub issues/commit/README	设计意图和负结果线索	辅助
+Discord	实践经验和最新动态	必须标记是否可验证
+
+当前外部调查已覆盖：
+
+21 个 cf_swarm_autopilot 仓库；
+8 个独立代码谱系；
+多个跨任务冠军；
+16 篇主要公开文献；
+UID20/v00 的新增机制。
+
+仍有缺口：
+
+GitHub Code Search 401；
+Discord 尚未系统覆盖；
+动态排行榜需要持续刷新；
+absence claim 比 presence claim 更弱。
+五、策略三层结构
+1. 短期策略
+
+特点：
+
+数小时内可以实现；
+不需要大规模训练；
+使用现有 depth/state；
+默认关闭；
+可单模块 A/B；
+容易回滚。
+
+当前候选：
+
+新冠军基线
+UID20/v00 artifact 验证；
+最小 instrumentation equivalence；
+小规模分层基线；
+替换 UID235 成为开发基准。
+Mountain 路线边界
+
+先测量：
+
+waypoint 是否越过实际 world；
+75/118/120m 边界冲突；
+越界是否对应 TIMEOUT/低分。
+
+有证据后才做条件 clamp。
+
+Median pad refinement
+
+使用多个检测的中位数稳定 pad 位置，重点验证 mountain noisy detection。
+
+Orphan waypoint/lane redistribution
+
+失败、完成或失联 drone 的路线/目标重新分配给有效 drone。
+
+Boxed-only steering（SC2B）
+
+当前结果：
+
+六对 mean +0.0425；
+median +0.0027；
+CI [+0.00079,+0.0895]；
+timeout +1；
+collision −3。
+
+状态：
+
+PROMISING_SCORE_SIGNAL_BUT_FAILED_CURRENT_SAFETY_GATE
+
+保持默认关闭，不调 keep=0.40，以后只在当前冠军基线上重新判断。
+
+Spiral re-seed
+
+路线耗尽、SEARCH 停滞后切换到未搜索方向，不再重复 clue-relative spiral。
+
+Tilt-adaptive reference governor
+
+高倾斜时限制激进动作，正常状态保持速度。必须同时评估速度损失。
+
+Landing lock / commitment control
+
+确认 pad 或进入 descent 后，减少目标切换和重新搜索。
+
+Action-contract guard
+
+阻止：
+
+nonfinite；
+错误 shape；
+越界动作；
+异常输出导致整条 seed 失败。
+
+主要提高稳定性，不一定直接增加正常分数。
+
+Thread pinning
+
+与官方单线程匹配，减少延迟抖动和 strike 风险。
+
+Fleet collision/separation
+
+需要先区分：
+
+teammate；
+static obstacle；
+failed drone；
+descent/platform contact。
+
+归因未解决前，不盲目扩大 separation radius。
+
+Pad ownership与lane分配
+
+包括：
+
+claim；
+release；
+blacklist；
+contention；
+orphan takeover；
+fleet-size-aware route capacity。
+2. 中期策略
+
+特点：
+
+需要状态记忆；
+可能需要小规模训练；
+需要更多 development seeds；
+开发成本中等。
+
+候选：
+
+Breadcrumb/visited-space memory
+
+利用已有 _crumbs 或新建轻量历史：
+
+避免重复搜索；
+识别未覆盖方向；
+为 route exhaustion 恢复提供依据。
+Depth occupancy/local cost map
+
+利用 depth + 已有位置：
+
+局部障碍地图；
+时间衰减；
+短期空间记忆；
+不重新做定位。
+Receding-horizon route planning
+
+根据：
+
+当前 POS；
+剩余时间；
+新 depth；
+visited-space；
+teammate state；
+
+有条件地重新规划，而不是一次性重复调用同一 clue-relative route head。
+
+GoalPosterior/mass mountain 修复
+
+加入：
+
+time-to-go veto；
+pad-found gate；
+descent 禁止 replan；
+expected-benefit 判断。
+
+不能简单打开 mountain 开关。
+
+更完善的平台分配
+
+联合考虑：
+
+距离；
+到达时间；
+pad 状态；
+fleet size；
+failed drones；
+corridor capacity；
+commitment。
+失败阶段分类器
+
+补齐：
+
+SEARCH；
+APPROACH；
+COMMIT；
+DESCENT；
+collision partner；
+pad contention。
+小规模训练
+
+包括：
+
+mountain terrain classifier；
+route head 微调；
+pad detector refinement；
+landing-state classifier。
+3. 长期策略
+
+特点：
+
+训练成本高；
+系统复杂；
+需要 OOD 和资源验证；
+不适合当前直接作为 P1。
+
+候选：
+
+重训 Mountain RoutePlanner；
+learned coverage/belief state；
+图网络多机协调；
+learned separation；
+learned pad allocation；
+MARL；
+ensemble/arbiter；
+domain randomization；
+长期共享地图；
+完整 SLAM/VO。
+
+完整 SLAM 当前优先级低，因为 state 已提供位置。当前更缺的是环境记忆、覆盖状态和局部地图，而不是重新定位。
+
+六、程序与推理优化线
+
+训练阶段可以使用 GPU；正式推理必须严格服从官方 validator。
+
+当前官方推理约束：
+
+CPU-only；
+2 CPU；
+6GB；
+有效单线程；
+包大小限制；
+不应依赖联网安装；
+wall-clock 通常不直接进入分数，但影响 strike、失败和稳定性。
+1. 优先的等价工程优化
+模型只加载一次；
+model.eval()；
+torch.inference_mode()；
+torch.set_num_threads(1)；
+OMP_NUM_THREADS=1；
+MKL_NUM_THREADS=1；
+减少 NumPy/Tensor 复制；
+避免重复 dtype、shape、normalization；
+缓存静态 Tensor/mask/常量；
+向量化 Python 循环；
+PadNet 多 drone batch；
+延迟加载非当前地图模型；
+避免重复 import 和网络构建。
+
+要求：
+
+关键中间输出一致；
+action-stream 一致或有严格误差界；
+官方容器内验证；
+N=2–8；
+内存和延迟不恶化。
+2. 中等风险优化
+TorchScript；
+ONNX Runtime CPU；
+图优化；
+算子融合；
+模型文件加载优化。
+
+需要检查：
+
+动态 fleet N；
+Transformer/自定义操作；
+threshold 翻转；
+detection/route/phase 差异；
+官方依赖；
+package size。
+3. 高风险优化
+INT8；
+模型剪枝；
+FP16 CPU；
+跳帧；
+降低输入分辨率；
+detection threshold 调整；
+改模型架构。
+
+这些属于算法实验，不能称为无损程序优化。
+
+4. 性能验证指标
+
+必须记录：
+
+初始化时间；
+first-act p50/p95/p99；
+steady-act p50/p95/p99；
+最大延迟；
+内存峰值；
+RPC strike；
+action equivalence；
+N=2–8；
+官方容器结果。
+七、失败阶段树
+
+后续 telemetry 应尽量区分：
+
+far-from-target TIMEOUT；
+near-target TIMEOUT；
+SEARCH stagnation；
+repeated search；
+APPROACH failure；
+COMMIT 未触发；
+DESCENT collision；
+DESCENT TILT；
+teammate collision；
+static-obstacle collision；
+failed-drone obstruction；
+pad contention。
+
+原则：
+
+策略必须匹配失败阶段。不能因为看到 TIMEOUT，就统一添加逃逸动作。
+
+八、模块化规则
+
+每个策略必须：
+
+默认关闭；
+独立开关；
+独立参数；
+不不可逆修改 baseline；
+单独启停；
+独立版本与哈希；
+记录来源；
+明确地图；
+明确 fleet；
+明确触发阶段；
+明确失败条件；
+明确安全熔断；
+明确回滚；
+一键恢复冻结基线；
+不暗中组合其他机制。
+
+实验顺序：
+
+单模块；
+单模块小规模筛选；
+机制有效后调参；
+单模块正式验证；
+只组合已独立通过的模块；
+组合后重新 A/B；
+不假设收益相加。
+九、实验与数据分层
+
+必须区分：
+
+Development
+
+可以：
+
+机制筛选；
+调参数；
+BO/TPE；
+分析失败。
+Validation
+
+只能评估冻结参数，不能继续调整。
+
+Holdout/OOD
+
+最终泛化验证，结果不能反馈调参。
+
+排行榜历史 seed
+
+不能直接作为 BO 目标，也不能反复针对性调参。
+
+配对实验必须固定：
+
+evaluator；
+seed；
+task；
+fleet；
+horizon；
+scorer；
+resource；
+telemetry；
+baseline artifact。
+十、贝叶斯优化的位置
+
+正确顺序：
+
+提出机制
+→ 小规模因果 A/B
+→ 确认机制有效
+→ development seeds 上调参
+→ 冻结参数
+→ validation
+→ holdout/OOD
+→ odd-N
+→ 资源验证
+→ promotion
+
+适合优化：
+
+route clamp；
+boxed keep；
+stagnation window；
+spiral angle；
+landing lock；
+separation radius；
+governor strength；
+memory decay；
+occupancy resolution。
+
+禁止：
+
+机制尚未有效就启动 BO；
+用最终 holdout 调参；
+用全部排行榜历史 seed 反复优化；
+看结果后降低 promotion threshold。
+十一、推广标准
+
+初筛阳性不等于推广。
+
+最终至少要求：
+
+配对平均绝对提升 ≥ +0.01；
+95% 配对 CI 下界 > 0；
+同时满足当前官方 improvement floor；
+以足够分差超过当前冠军；
+overall failure 不增加；
+目标地图改善；
+非目标地图不超过预注册回退容忍度；
+collision 不恶化；
+TILT 不恶化；
+TIMEOUT 不恶化；
+官方 CPU/内存/包大小合规；
+N=3/5/7 通过；
+N=2/4/6/8 不出现 fleet-specific regression；
+validation/holdout 后不再调参。
+
+2–4 个 episode 只能做筛选。
+
+十二、监督机制
+自检即可
+文档；
+统计；
+源码调查；
+策略注册；
+默认关闭的小模块；
+确定性工具修复。
+自检后可直接 canary
+1–2 条小规模运行；
+不修改 scorer/task；
+有清晰回滚；
+telemetry 完整。
+需要独立审计
+修改 action authority；
+修改 scorer；
+修改 task；
+修改 canonicalization；
+修改 ACCEPTED_PRIMARY；
+大规模验证前；
+promotion 前；
+最终提交前。
+自修规则
+确定性局部错误最多自修两轮；
+有效 env.step 证据产生后，不能修改语义再混用数据；
+目标、成本、范围或架构权衡必须回到用户。
+十三、冠军刷新机制
+
+轻量 freshness check 必须发生在：
+
+选择新策略前；
+promotion 前；
+final validation 前；
+提交前。
+
+如果冠军未变化：
+
+不全面重查。
+
+如果冠军变化：
+
+获取新 UID、model ID、repository、artifact、score；
+只分析新 lineage；
+比较代码、权重、配置和推理；
+更新竞争基准；
+保留历史证据；
+重新计算目标分差。
+
+当前：
+
+历史基线：UID235；
+用户观察新冠军：UID20；
+model ID：966；
+repo：alche3206/swarm-autopilot-v00；
+P9 负责正式验证与 rebase。
+十四、当前项目状态
+项目	状态
+UID235	历史冻结/回滚基线
+UID20/v00	候选新冠军基线，等待 P9 验证
+C6	CLOSED_PASS
+Pilot-28	有效
+D1A-32	有效分数证据
+D1B-8	有效失败阶段证据
+Mountain score sink	多来源重复确认
+Mountain stagnation	支持
+SC2 nudge	隔离
+SC2R waypoint skip	阴性、NO_TRIGGER
+SC2P current-position replan	中期候选，未运行
+SC2B boxed steering	分数正向、安全失败、默认关闭
+Claude R2	完成：21 仓库、8 独立谱系
+新策略默认启用	无
+BO	未授权
+SLAM	未授权
+正式推广	无
+十五、当前策略优先顺序
+
+在 P9 验证 UID20 后：
+
+将 UID20/v00 建立为最小新基线；
+识别 UID20 超过 UID235 的具体程序机制；
+route-bound instrumentation；
+median pad refinement；
+orphan waypoint redistribution；
+低风险线程/加载/复制/批处理优化；
+tilt-adaptive governor；
+breadcrumb/coverage memory；
+spiral re-seed；
+SC2B 机制重审；
+collision attribution 后再做 fleet guard；
+机制通过后才做 BO；
+最后才考虑重训练、MARL 和 SLAM。
+十六、一句话防漂移提醒
+
+先刷新当前冠军，以官方环境和配对证据建立基准；每次只测试一个默认关闭、可回滚、与明确失败阶段对应的模块；小样本只筛选，机制确认后才调参，参数冻结后才验证；任何收益必须同时满足统计、安全、非目标地图、奇数 fleet 和官方资源要求；不能因为赶时间降低准确性，也不能因追求完美流程拖延真正的策略实验。
+
+以后你只需要提醒我：
+
+“按 SWARM_UID20_COMPETITIVE_FRAMEWORK_V1，先读取磁盘当前权威索引，再继续。”
+
+我就应以这套框架为总原则，同时以磁盘最新证据更新其中可变化的“当前状态”。

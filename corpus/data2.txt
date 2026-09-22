@@ -1,0 +1,201 @@
+项目：
+/home/administrator/workspace/sn123_mantis_runtime
+
+本轮任务：使用new-only历史数据，对已冻结的XSEC Leader和Fallback做最终refit并封存推理参数。不得访问Future Live，不重新选模型或调参。
+
+先做任务归属检查：
+- 只处理MULTIXSEC/XSEC-RANK；
+- 若发现输入、文件或状态属于FUNDING/LBFGS/MULTI-BREAKOUT等其他任务，立即停止并报告XSEC_TASK_SCOPE_MISMATCH。
+
+优先读取：
+- reports/xsec_rank/XSEC_CURRENT_STATE.md
+- evidence/xsec_rank/split_manifest_v2.json
+- reports/xsec_rank/DATA_PARTITION_POLICY_V2.md
+- src/mantis_local_oracle/tasks/xsec_rank/active_data.py
+- src/mantis_local_oracle/tasks/xsec_rank/xsec_columnar_reader.py
+- src/mantis_local_oracle/tasks/xsec_rank/candidates_batch11.py
+- src/mantis_local_oracle/tasks/xsec_rank/candidates_batch9.py
+- Batch11与Batch9中定义Leader/Fallback训练契约的正式prereg、结果JSON
+- 缺失值与复现审计中直接相关的正式结论
+
+不得扫描其他任务或全部历史报告。
+
+固定模型：
+
+- HISTORICAL_LEADER = PAIRWISE_RANK_LOGISTIC
+- HISTORICAL_FALLBACK = NONNEGATIVE_RIDGE_STACK
+
+固定历史refit范围：
+
+- 输入上下文：sidx [1543553,1742989)
+- Future Live：sidx [1742989,1809690)，禁止读取
+- AHEAD=240
+- 训练标签必须成熟，目标不得越过历史上界1742988
+- 使用候选冻结实现中真实定义的dense/exact口径、特征、缺失处理、随机种子、样本上限和预处理规则；必须从源码确认，不得凭记忆重写。
+
+
+额外做一次极小的gapfill依赖确认：
+
+- 使用rg和Python import/call graph检查active_data.py、final_refit.py（实现后）、candidates_batch11.py、candidates_batch9.py及其直接导入的XSEC特征模块；
+- 搜索 gap_backfill、gapfill、gap_backfill.db 及其路径；
+- 只判断XSEC正式Leader/Fallback/refit/推理是否依赖，不扫描其他任务；
+- 不读取、不修改、不删除gapfill数据；
+- 将结论写入final-refit manifest：
+  XSEC_GAPFILL_DEPENDENCY = NONE 或 REQUIRED；
+- 如果发现正式依赖，停止refit并报告调用链；
+- 如果为NONE，明确说明“XSEC任务不依赖gapfill；是否手动删除仍需考虑其他任务，本轮不删除”。
+
+一、进程治理
+
+开始和结束各检查一次XSEC相关进程：
+
+- 清理能够证明属于已结束XSEC轮次的孤儿shell、sleep、临时训练进程；
+- 不碰当前正常refit、Claude主进程、其他任务或归属不明进程；
+- 清理本轮XSEC的/tmp；
+- 报告开始、结束、清理数量。
+
+二、先冻结refit契约
+
+在训练前新增：
+
+reports/xsec_rank/FINAL_REFIT_V1_PREREG.md
+
+必须记录：
+
+- 两个固定模型身份；
+- 数据范围和成熟标签规则；
+- 从真实源码提取的特征、预处理、随机性、训练样本上限；
+- 不允许改变公式、特征、超参数、模型顺序；
+- 不以训练结果重新选择Leader；
+- Future Live禁止访问；
+- artifact格式和验收条件。
+
+写完后记录SHA，再开始实现和训练。
+
+三、new-only固定历史入口
+
+如有必要，最小更新：
+
+src/mantis_local_oracle/tasks/xsec_rank/active_data.py
+
+只新增无参数或固定边界的final-refit历史读取入口：
+
+- 固定读取[1543553,1742989)；
+- 不允许用户传入扩大范围；
+- 使用xsec_columnar_reader；
+- 不导入SQLite、real_data或旧split_guard；
+- Future边界在任何内容读取前fail-closed；
+- 不重新开放Selection/Confirmation公共loader。
+
+四、refit实现
+
+新增：
+
+src/mantis_local_oracle/tasks/xsec_rank/final_refit.py
+
+要求：
+
+- 调用/复用Batch11和Batch9冻结逻辑，不复制并悄悄修改算法；
+- 若冻结候选代码没有独立fit/export接口，只提取最小公共训练步骤，并用测试证明与冻结实现一致；
+- Leader和Fallback都使用截至历史末端可获得的全部合规训练上下文；
+- 若冻结算法有300,000样本等上限，必须原样保留并报告实际eligible pool与实际使用数，不能擅自取消；
+- 所有预处理器只在成熟训练样本上fit；
+- Pairwise NaN处理严格沿用修复后的冻结规则；
+- 固定随机种子和线程，保证可重复；
+- 不计算Future预测；
+- 不运行官方miner-panel、Salience或STRICT。
+
+封存格式禁止pickle。使用：
+
+evidence/xsec_rank/final_refit_v1/
+  leader_model.npz
+  fallback_model.npz
+  model_manifest.json
+  SHA256SUMS
+
+manifest至少记录：
+
+- 模型名和角色；
+- 数据root身份及依赖SHA引用；
+- sidx范围、AHEAD、训练截止；
+- eligible/used样本数；
+- 特征顺序；
+- 系数/权重shape；
+- imputer/scaler等预处理参数；
+- seed、线程和依赖版本；
+- 对应源码SHA；
+- artifact SHA；
+- Future未访问声明。
+
+五、准确性测试
+
+新增：
+
+tests/xsec_rank/test_final_refit.py
+
+验证：
+
+- 两次独立refit产生相同参数或在冻结实现允许的明确浮点容差内一致；
+- 相同artifact推理逐位确定；
+- final_refit训练步骤与Batch11/Batch9冻结训练逻辑在受控历史小窗一致；
+- hotkey/UID/历史miner embedding完全不进入候选模型训练；
+- 价格quality=1/2和NaN/0语义符合现有契约；
+- 所有训练标签成熟；
+- 预处理无未来fit；
+- 输出shape=(T,33)、有限或按官方缺失约定转换、范围[-1,1]；
+- Leader/Fallback身份没有互换；
+- SQLite被屏蔽时全部通过；
+- 将Future文件读取函数设为spy，calls必须为0；
+- Selection/Confirmation普通访问门仍锁定；
+- 数据文件未修改。
+
+六、结果报告
+
+新增：
+
+- reports/xsec_rank/FINAL_REFIT_V1_RESULT.md
+- evidence/xsec_rank/final_refit_v1.json
+- evidence/xsec_rank/final_refit_v1_sha256.txt
+- tests/xsec_rank/manual_audit_final_refit.sh
+
+允许更新：
+
+- reports/xsec_rank/XSEC_CURRENT_STATE.md，保持≤120行。
+
+manual_audit_final_refit.sh：
+
+- set -euo pipefail并trap清理/tmp；
+- 校验模型artifact和SHA；
+- 运行精简final-refit测试，但不要重复完整耗时训练两次；耗时重复性证据读取正式JSON；
+- 确认旧SQLite不存在；
+- 确认Future guard；
+- 确认无sidecar；
+- 输出AUDIT_PASS/AUDIT_FAIL并正确返回退出码。
+
+七、禁止修改
+
+- PROJECT_RULES.md
+- xsec_columnar_reader.py、split_guard_v2.py
+- Batch1–11
+- scorer、dual_scorer、causal_scorer
+- FUNDING/common/vendor
+- history_data及其他数据
+- 既有报告和证据
+
+普通实现、测试和资源问题自行解决。若源码显示无法在不改变冻结模型语义的情况下导出artifact，停止报告，不得自行改模型。
+
+最终状态只能是：
+
+- XSEC_FINAL_REFIT_V1_FROZEN_NEW_ONLY_PASS
+- XSEC_FINAL_REFIT_V1_BLOCKED
+- XSEC_TASK_SCOPE_MISMATCH
+
+为节省token：
+
+- 详细内容写入MD/JSON；
+- Claude最终中文回复≤25行；
+- 不粘贴系数、完整SHA、长表格或Shell内容；
+- 只报告实际训练范围、样本数、artifact、测试结果、Future零访问、进程清理和最终状态；
+- 最后一行只输出：
+
+wsl.exe -d Ubuntu -u administrator -- bash -lc 'cd /home/administrator/workspace/sn123_mantis_runtime && bash tests/xsec_rank/manual_audit_final_refit.sh'
