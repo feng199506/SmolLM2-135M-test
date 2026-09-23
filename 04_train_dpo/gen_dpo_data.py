@@ -42,6 +42,14 @@ MAX_SAMPLES = None
 
 PRINT_EVERY = 1
 
+# rejected 用采样生成，避免贪心解码产出纯标点噪声
+REJECTED_DO_SAMPLE = True
+REJECTED_TEMPERATURE = 1.1
+REJECTED_TOP_P = 0.95
+REJECTED_REPETITION_PENALTY = 1.15
+MIN_REJECTED_CHARS = 20
+MAX_REJECTED_ATTEMPTS = 3
+
 
 # ============================================================
 # 3. 时间
@@ -349,7 +357,13 @@ def generate_rejected(
 
         max_new_tokens=MAX_NEW_TOKENS,
 
-        do_sample=False,
+        do_sample=REJECTED_DO_SAMPLE,
+
+        temperature=REJECTED_TEMPERATURE,
+
+        top_p=REJECTED_TOP_P,
+
+        repetition_penalty=REJECTED_REPETITION_PENALTY,
 
         num_beams=1,
 
@@ -511,50 +525,71 @@ def clean_answer(answer):
 # 13. valid rejected
 # ============================================================
 
+def _cjk_or_alnum_count(text):
+    count = 0
+    for ch in text:
+        if ch.isalnum():
+            count += 1
+        elif "\u4e00" <= ch <= "\u9fff":
+            count += 1
+    return count
+
+
 def valid_rejected(answer):
 
     if not answer:
-
         return False
 
+    answer = answer.strip()
 
-    if len(answer) < 5:
-
+    if len(answer) < MIN_REJECTED_CHARS:
         return False
 
+    # 至少要有一定数量的有效字符，过滤纯标点/空白
+    if _cjk_or_alnum_count(answer) < 8:
+        return False
+
+    punct_only = re.sub(
+        r"[\s\W_]+",
+        "",
+        answer,
+        flags=re.UNICODE,
+    )
+    if len(punct_only) < 8:
+        return False
 
     if answer.count("�") >= 2:
-
         return False
-
 
     bad_control_count = 0
-
-
     for ch in answer:
-
         code = ord(ch)
-
-        if (
-            code < 32
-            and ch not in "\n\r\t"
-        ):
-
+        if code < 32 and ch not in "\n\r\t":
             bad_control_count += 1
 
-
     if bad_control_count >= 2:
-
         return False
 
-
-    if re.search(
-        r"(.)\1{7,}",
-        answer,
-    ):
-
+    # 重复字符 / 重复短片段
+    if re.search(r"(.)\1{5,}", answer):
         return False
 
+    if re.search(r"(.{2,6})\1{3,}", answer):
+        return False
+
+    # 标点占比过高
+    non_space = [ch for ch in answer if not ch.isspace()]
+    if non_space:
+        punct = sum(
+            1
+            for ch in non_space
+            if not (
+                ch.isalnum()
+                or "\u4e00" <= ch <= "\u9fff"
+            )
+        )
+        if punct / len(non_space) > 0.5:
+            return False
 
     return True
 
@@ -646,39 +681,37 @@ with open(
 
 
         # ====================================================
-        # generate rejected
+        # generate rejected（采样 + 多次重试）
         # ====================================================
 
-        rejected = generate_rejected(
+        rejected = ""
 
-            question,
+        for attempt in range(1, MAX_REJECTED_ATTEMPTS + 1):
 
-            index + 1,
+            rejected = generate_rejected(
+                question,
+                index + 1,
+                total,
+            )
 
-            total,
+            print()
+            print(f"RAW REJECTED (attempt {attempt}):")
+            print(repr(rejected))
 
-        )
+            rejected = clean_answer(rejected)
 
+            print()
+            print("CLEANED REJECTED:")
+            print(repr(rejected))
 
-        print()
-        print("RAW REJECTED:")
+            if valid_rejected(rejected) and rejected != chosen:
+                break
 
-        print(
-            repr(rejected)
-        )
-
-
-        rejected = clean_answer(
-            rejected
-        )
-
-
-        print()
-        print("CLEANED REJECTED:")
-
-        print(
-            repr(rejected)
-        )
+            print(
+                f"[{index + 1}/{total}] "
+                f"rejected attempt {attempt} invalid, retry..."
+            )
+            rejected = ""
 
 
         # ====================================================

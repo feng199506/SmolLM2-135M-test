@@ -44,8 +44,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 MODEL_PATH = (
     BASE_DIR
-    / "qa_output"
+    / "sft_output"
 )
+# MODEL_PATH = (
+#     BASE_DIR
+#     / "dpo_output"
+# )
 
 # ------------------------------------------------------------
 # GRPO 数据
@@ -53,7 +57,7 @@ MODEL_PATH = (
 
 DATA_PATH = (
     BASE_DIR
-    / "train_QA"
+    / "05_train_grpo"
     / "data"
     / "grpo_train.jsonl"
 )
@@ -227,24 +231,22 @@ rouge = rouge_scorer.RougeScorer(
 #
 # ============================================================
 
-SEMANTIC_MODEL_NAME = (
-    "sentence-transformers/"
-    "paraphrase-multilingual-MiniLM-L12-v2"
-)
+SEMANTIC_MODEL_PATH = BASE_DIR / "sentence_transformer_configs"
 
 print("=" * 80)
 print("Loading semantic model")
 print("=" * 80)
 
 semantic_model = SentenceTransformer(
-    SEMANTIC_MODEL_NAME,
+    str(SEMANTIC_MODEL_PATH),
+    local_files_only=True
 )
 
 semantic_model.eval()
 
 print(
     f"Semantic model: "
-    f"{SEMANTIC_MODEL_NAME}"
+    f"{SEMANTIC_MODEL_PATH}"
 )
 
 print()
@@ -777,34 +779,6 @@ def combined_reward(
             reward
         )
 
-        # --------------------------------------------
-        # Debug
-        # --------------------------------------------
-
-        print(
-            "\n[Reward]"
-        )
-
-        print(
-            f"ROUGE-L  = "
-            f"{rouge_score:.4f}"
-        )
-
-        print(
-            f"Semantic = "
-            f"{semantic_score:.4f}"
-        )
-
-        print(
-            f"Keyword  = "
-            f"{keyword_score:.4f}"
-        )
-
-        print(
-            f"Total    = "
-            f"{reward:.4f}"
-        )
-
     return rewards
 
 
@@ -823,6 +797,20 @@ use_bf16 = (
     and torch.cuda.is_bf16_supported()
 )
 
+# 每个 optimizer step 实际消耗的训练样本数
+effective_batch_size = BATCH_SIZE * GRADIENT_ACCUMULATION_STEPS
+num_examples = len(dataset)
+
+# 每个 epoch 的 optimizer steps
+steps_per_epoch = (
+    num_examples + effective_batch_size - 1
+) // effective_batch_size
+
+# 总 optimizer steps（必须与 NUM_EPOCHS 一致）
+total_steps = steps_per_epoch * NUM_EPOCHS
+
+# warmup = 总训练步数的 3%
+warmup_steps = max(1, int(total_steps * 0.03))
 
 training_args = GRPOConfig(
 
@@ -876,7 +864,7 @@ training_args = GRPOConfig(
 
     weight_decay=0.01,
 
-    warmup_ratio=0.05,
+    warmup_steps=warmup_steps,
 
     # ========================================================
     # Training
@@ -1002,10 +990,3 @@ print(
     f"Model saved to:\n"
     f"{OUTPUT_DIR}"
 )
-
-"""
-================================================================================
-CREATING SFT TRAINER
-================================================================================
-[RANK 0] The chat template does not include the assistant turn's end-of-turn token in the loss mask; the model may not learn to stop.
-"""

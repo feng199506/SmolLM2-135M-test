@@ -13,14 +13,16 @@ from trl import DPOTrainer, DPOConfig
 # 1. 路径
 # ============================================================
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # SFT 训练完成后的模型
-MODEL_PATH = r"..\sft_output"
+MODEL_PATH = BASE_DIR / "sft_output"
 
 # DPO 数据
-DATA_PATH = r".\data"
+DATA_PATH = Path(__file__).resolve().parent / "data"
 
 # DPO 输出
-OUTPUT_PATH = r"..\dpo_output"
+OUTPUT_PATH = BASE_DIR / "dpo_output"
 
 
 # ============================================================
@@ -28,7 +30,7 @@ OUTPUT_PATH = r"..\dpo_output"
 # ============================================================
 
 tokenizer = AutoTokenizer.from_pretrained(
-    MODEL_PATH,
+    str(MODEL_PATH),
     trust_remote_code=True,
 )
 
@@ -43,9 +45,9 @@ print("Chat template:", tokenizer.chat_template is not None)
 # ============================================================
 
 model = AutoModelForCausalLM.from_pretrained(
-    MODEL_PATH,
+    str(MODEL_PATH),
     trust_remote_code=True,
-    dtype="auto",
+    torch_dtype="auto",
 )
 
 print("Model loaded")
@@ -149,15 +151,30 @@ if tokenizer.chat_template is None:
 # ============================================================
 # 9. DPO 训练参数
 # ============================================================
+per_device_bs = 1
+grad_accum = 8
+# 每个 optimizer step 实际消耗的训练样本数
+effective_batch_size = per_device_bs * grad_accum
+num_examples = len(dataset)
+num_epochs = 20
+# 每个 epoch 的 optimizer steps
+steps_per_epoch = (num_examples + effective_batch_size - 1
+                  ) // effective_batch_size
+
+# 总 optimizer steps
+total_steps = steps_per_epoch * num_epochs
+
+# warmup = 总训练步数的 3%
+warmup_steps = max(1, int(total_steps * 0.03))
 
 training_args = DPOConfig(
-    output_dir=OUTPUT_PATH,
+    output_dir=str(OUTPUT_PATH),
 
-    num_train_epochs=3,
+    num_train_epochs=num_epochs,
 
-    per_device_train_batch_size=1,
+    per_device_train_batch_size=per_device_bs,
 
-    gradient_accumulation_steps=8,
+    gradient_accumulation_steps=grad_accum,
 
     learning_rate=5e-6,
 
@@ -178,6 +195,7 @@ training_args = DPOConfig(
     report_to="none",
 
     remove_unused_columns=False,
+    warmup_steps=warmup_steps,
 )
 
 
@@ -212,9 +230,9 @@ trainer.train()
 # 12. 保存 DPO 模型
 # ============================================================
 
-trainer.save_model(OUTPUT_PATH)
+trainer.save_model(str(OUTPUT_PATH))
 
-tokenizer.save_pretrained(OUTPUT_PATH)
+tokenizer.save_pretrained(str(OUTPUT_PATH))
 
 
 # ============================================================

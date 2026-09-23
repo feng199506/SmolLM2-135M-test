@@ -21,11 +21,13 @@ from trl import (
 # 1. 路径
 # ============================================================
 
-MODEL_PATH = r"..\lm_output\final"
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-DATA_PATH = r".\data"
+MODEL_PATH = BASE_DIR / "lm_output" / "final"
 
-OUTPUT_PATH = r"..\sft_output"
+DATA_PATH = Path(__file__).resolve().parent / "data"
+
+OUTPUT_PATH = BASE_DIR / "sft_output"
 
 
 # ============================================================
@@ -66,7 +68,7 @@ print("LOADING TOKENIZER")
 print("=" * 80)
 
 tokenizer = AutoTokenizer.from_pretrained(
-    MODEL_PATH,
+    str(MODEL_PATH),
     trust_remote_code=True,
 )
 
@@ -158,7 +160,7 @@ print("LOADING MODEL")
 print("=" * 80)
 
 model = AutoModelForCausalLM.from_pretrained(
-    MODEL_PATH,
+    str(MODEL_PATH),
     trust_remote_code=True,
     torch_dtype="bfloat16",
 )
@@ -302,18 +304,33 @@ for i in range(min(10, len(dataset))):
 # ============================================================
 # 13. 训练配置
 # ============================================================
+per_device_bs = 1
+grad_accum = 8
+# 每个 optimizer step 实际消耗的训练样本数
+effective_batch_size = per_device_bs * grad_accum
+num_examples = len(dataset)
+num_epochs = 20
+# 每个 epoch 的 optimizer steps
+steps_per_epoch = (num_examples + effective_batch_size - 1
+                  ) // effective_batch_size
+
+# 总 optimizer steps
+total_steps = steps_per_epoch * num_epochs
+
+# warmup = 总训练步数的 3%
+warmup_steps = max(1, int(total_steps * 0.03))
+
+
 
 training_args = SFTConfig(
 
-    output_dir=OUTPUT_PATH,
+    output_dir=str(OUTPUT_PATH),
 
-    # num_train_epochs=5,
-    # num_train_epochs=50,
-    num_train_epochs=20,
+    num_train_epochs=num_epochs,
 
-    per_device_train_batch_size=1,
+    per_device_train_batch_size=per_device_bs,
 
-    gradient_accumulation_steps=8,
+    gradient_accumulation_steps=grad_accum,
 
     learning_rate=2e-5,
 
@@ -344,6 +361,7 @@ training_args = SFTConfig(
     remove_unused_columns=False,
 
     optim="adamw_torch_fused",
+    warmup_steps=warmup_steps,
 
 )
 
@@ -392,7 +410,7 @@ print("SAVING MODEL")
 print("=" * 80)
 
 trainer.save_model(
-    OUTPUT_PATH
+    str(OUTPUT_PATH)
 )
 
 
@@ -401,7 +419,7 @@ trainer.save_model(
 # ============================================================
 
 tokenizer.save_pretrained(
-    OUTPUT_PATH
+    str(OUTPUT_PATH)
 )
 
 

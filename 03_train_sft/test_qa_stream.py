@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from transformers import AutoModelForCausalLM, AutoTokenizer, TextStreamer
 
 
@@ -5,7 +7,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, TextStreamer
 # 1. 本地模型路径
 # ============================================================
 
-MODEL_DIR = r"..\sft_output"
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "sft_output"
 
 
 # ============================================================
@@ -59,7 +62,6 @@ text = tokenizer.apply_chat_template(
     messages,
     tokenize=False,
     add_generation_prompt=True,
-    enable_thinking=False,
 )
 
 model_inputs = tokenizer(
@@ -78,25 +80,16 @@ streamer = TextStreamer(
     skip_special_tokens=True,
 )
 
-
-# ============================================================
-# 7. 流式生成
-# ============================================================
 print("\n" + "=" * 60)
 print("PROMPT:")
 print(prompt)
-print("\n" + "=" * 60)
-print("CONTENT:")
+print("=" * 60)
 print()
 
-generated_ids = model.generate(
+_ = model.generate(
     **model_inputs,
     max_new_tokens=256,
     do_sample=False,
     streamer=streamer,
     pad_token_id=tokenizer.eos_token_id,
 )
-
-print("\n")
-print("=" * 60)
-print("DONE")
