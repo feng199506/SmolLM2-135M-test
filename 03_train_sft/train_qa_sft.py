@@ -309,7 +309,7 @@ grad_accum = 8
 # 每个 optimizer step 实际消耗的训练样本数
 effective_batch_size = per_device_bs * grad_accum
 num_examples = len(dataset)
-num_epochs = 20
+num_epochs = 10
 # 每个 epoch 的 optimizer steps
 steps_per_epoch = (num_examples + effective_batch_size - 1
                   ) // effective_batch_size

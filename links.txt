@@ -1,8 +1,8 @@
 torch-2.12.0+cu126-cp310-cp310-win_amd64.whl: https://download-r2.pytorch.org/whl/cu126/torch-2.12.0%2Bcu126-cp310-cp310-win_amd64.whl
 Qwen3-0.6-Base: https://huggingface.co/Qwen/Qwen3-0.6B-Base/tree/main
 Qwen3-0.6: https://huggingface.co/Qwen/Qwen3-0.6B/tree/main
-SmolLM2-135M-multilingual-base: https://huggingface.co/agentlans/SmolLM2-135M-multilingual-base/tree/main
-SmolLM2-135M-multilingual-instuct: https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct/tree/main
+SmolLM2-135M-base: https://huggingface.co/HuggingFaceTB/SmolLM2-135M/tree/main
+SmolLM2-135M-instuct: https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct/tree/main
 SmolLM2-135M-multilingual-base: https://huggingface.co/agentlans/SmolLM2-135M-multilingual-base/tree/main
 paraphrase-multilingual-MiniLM-L12-v2: https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/tree/main
 

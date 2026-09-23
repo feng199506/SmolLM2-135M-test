@@ -39,6 +39,7 @@ OUTPUT_PATH = OUTPUT_DIR / "dpo_train.jsonl"
 MAX_NEW_TOKENS = 256
 
 MAX_SAMPLES = None
+# MAX_SAMPLES = 5
 
 PRINT_EVERY = 1
 
